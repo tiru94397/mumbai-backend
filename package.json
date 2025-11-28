@@ -2,7 +2,6 @@
   "name": "vfai-backend",
   "version": "1.0.0",
   "main": "dist/server.js",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
@@ -22,17 +21,5 @@
     "@types/node-fetch": "^3.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
-  },
-  "description": "��#\u0000 \u0000v\u0000f\u0000a\u0000i\u0000-\u0000b\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tiru94397/vfai-tiru.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tiru94397/vfai-tiru/issues"
-  },
-  "homepage": "https://github.com/tiru94397/vfai-tiru#readme"
+  }
 }

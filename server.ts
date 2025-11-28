@@ -11,6 +11,15 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
+// Define response type for TS
+interface PerplexityResponse {
+  choices?: {
+    message?: {
+      content?: string;
+    };
+  }[];
+}
+
 // Health check
 app.get("/api/perplexity/status", (_req, res) => {
   res.json({ status: "ok", message: "Perplexity backend is active ✅" });
@@ -42,10 +51,13 @@ Do not include markdown, JSON, quotes, or extra explanation.`,
       }),
     });
 
-    const data = await response.json();
-    const text = data?.choices?.[0]?.message?.content?.trim() || "No response from Perplexity";
+    const data = (await response.json()) as PerplexityResponse;
 
-    res.send(text); // ✅ Plain text reply
+    const text =
+      data.choices?.[0]?.message?.content?.trim() ||
+      "No response from Perplexity";
+
+    res.send(text);
   } catch (error) {
     console.error("Perplexity API error:", error);
     res.status(500).send("Error connecting to Perplexity API");
